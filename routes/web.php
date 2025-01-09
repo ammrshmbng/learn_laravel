@@ -16,3 +16,38 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/mahasiswa', function () {
+    return view('mahasiswa');
+});
+
+
+// view inside subfolder
+// Route::get('/mahasiswa-univ', function () {
+//     return view('universitas.mahasiswa');
+// });
+
+
+
+// mengirim data ke view
+// Route::get('/mahasiswa', function () {
+//     return view('universitas.mahasiswa',[
+//         "mahasiswa01" => "Risa Lestari",
+//         "mahasiswa02" => "Rudi Hermawan",
+//         "mahasiswa03" => "Bambang Kusumo",
+//         "mahasiswa04" => "Lisa Permata"
+//         ]);
+//     });
+
+// Route::get('/mahasiswa', function () {
+//     $arrMahasiswa = ["Risa Lestari","Rudi Hermawan","Bambang Kusumo",
+//     "Lisa Permata"];
+//     return view('universitas.mahasiswa',['mahasiswa' => $arrMahasiswa]);
+//     });
+
+
+Route::get('/mahasiswa', function () {
+    $arrMahasiswa = ["Risa Lestari","Rudi Hermawan","Bambang Kusumo",
+    "Lisa Permata"];
+    return view('universitas.mahasiswa',['mahasiswa' => $arrMahasiswa]);
+    });
