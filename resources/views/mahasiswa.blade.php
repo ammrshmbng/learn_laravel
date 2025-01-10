@@ -13,14 +13,15 @@
         <h1 class="bg-dark px-3 py-1 text-white d-inline-block">{{ $nilai }}</h1>
         <br>
         <div class="alert alert-secondary d-inline-block">
-        <?php
-        if (($nilai >= 0) and ($nilai < 50)) {
-            echo "Maaf, anda tidak lulus";
-        }
-        else if (($nilai >= 50) and ($nilai <= 100)) {
-            echo "Selamat, anda lulus";
-        }
-        ?>
+            @if (($nilai >= 0) and ($nilai < 50))
+            <div class="alert alert-danger d-inline-block">
+                Maaf, anda tidak lulus
+            </div>
+            @elseif (($nilai >= 50) and ($nilai <= 100))
+            <div class="alert alert-success d-inline-block">
+                Selamat, anda lulus
+            </div>
+            @endif
 <!-- End Generation Here -->
 </body>
 </html>
