@@ -13,15 +13,19 @@
         <h1 class="bg-dark px-3 py-1 text-white d-inline-block">{{ $nilai }}</h1>
         <br>
         <div class="alert alert-secondary d-inline-block">
-            @if (($nilai >= 0) and ($nilai < 50))
-            <div class="alert alert-danger d-inline-block">
-                Maaf, anda tidak lulus
-            </div>
-            @elseif (($nilai >= 50) and ($nilai <= 100))
-            <div class="alert alert-success d-inline-block">
-                Selamat, anda lulus
-            </div>
-            @endif
+@switch($nilai)
+    @case(0)
+        <div class="alert alert-danger d-inline-block">Tidak ikut ujian</div>
+        @break
+    @case(75)
+        <div class="alert alert-success d-inline-block">Lumayan</div>
+        @break
+    @case(100)
+        <div class="alert alert-success d-inline-block">Sempurna</div>
+        @break
+    @default
+        <div class="alert alert-dark d-inline-block">Nilai tidak valid</div>
+@endswitch
 <!-- End Generation Here -->
 </body>
 </html>
