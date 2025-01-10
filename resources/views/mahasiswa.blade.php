@@ -8,13 +8,9 @@
     <title>Data Mahasiswa</title>
 </head>
 <body>
-    <div class="container text-center mt-3 pt-3 bg-white">
-        <h1 class="bg-dark px-3 py-1 text-white d-inline-block">
-            <?php echo $nama; ?>
-        </h1>
-        <h1 class="bg-dark px-3 py-1 text-white d-inline-block">
-            <?php echo $nilai; ?>
-        </h1>
+    <div class="container text-center mt-3 py-3 bg-white">
+        <h1 class="bg-dark px-3 py-1 text-white d-inline-block">{{$nama}}</h1>
+        <h1 class="bg-dark px-3 py-1 text-white d-inline-block">{{$nilai}}</h1>
     </div>
 </body>
 </html>
