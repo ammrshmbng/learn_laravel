@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <title>@yield('title')</title>
+  <title>@yield('title','Sistem Informasi Mahasiswa')</title>
 </head>
 <body>
 
@@ -13,8 +13,7 @@
   <div class="container">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link @yield('menuMahasiswa')" href="/mahasiswa">
-          Data Mahasiswa</a>
+        <a class="nav-link @yield('menuMahasiswa')" href="/mahasiswa">Data Mahasiswa</a>
       </li>
       <li class="nav-item">
         <a class="nav-link @yield('menuDosen')" href="/dosen">Data Dosen</a>
@@ -26,7 +25,9 @@
   </div>
 </nav>
 
-@yield('content')
+@section('content')
+<div class="alert alert-primary text-center">Sistem Informasi Mahasiswa</div>
+@show
 
 <footer class="bg-dark py-4 text-white mt-4">
 <div class="container">
