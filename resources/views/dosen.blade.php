@@ -1,4 +1,4 @@
-@include('layout.header')
+@include('layout.header',['title' => 'Data Dosen'])
 
 <div class="container text-center mt-3 p-4 bg-white">
   <h1 class="mb-3">Data Dosen</h1>

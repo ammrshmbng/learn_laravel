@@ -1,4 +1,4 @@
-@include('layout.header')
+@include('layout.header',['title' => 'Gallery'])
 
 <div class="container text-center mt-3 p-4 bg-white">
   <h1 class="mb-3">Gallery</h1>
