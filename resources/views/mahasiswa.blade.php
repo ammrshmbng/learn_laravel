@@ -1,5 +1,7 @@
-@include('layout.header',['title' => 'Data Mahasiswa'])
+@extends('layout.master')
+@section('title','Data Mahasiswa')
 
+@section('content')
 <div class="container text-center mt-3 p-4 bg-white">
   <h1 class="mb-3">Data Mahasiswa</h1>
   <div class="row">
@@ -14,5 +16,4 @@
     </div>
   </div>
 </div>
-
-@include('layout.footer')
+@endsection

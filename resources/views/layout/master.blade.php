@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <title>{{$title}}</title>
+  <title>@yield('title')</title>
 </head>
 <body>
 
@@ -24,3 +24,14 @@
     </ul>
   </div>
 </nav>
+
+@yield('content')
+
+<footer class="bg-dark py-4 text-white mt-4">
+<div class="container">
+  Sistem Informasi Mahasiswa | Copyright © {{ date("Y") }} Duniailkom
+</div>
+</footer>
+
+</body>
+</html>	
