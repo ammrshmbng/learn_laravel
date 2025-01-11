@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('title','Data Mahasiswa')
+@section('menuMahasiswa','active')
 
 @section('content')
 <div class="container text-center mt-3 p-4 bg-white">

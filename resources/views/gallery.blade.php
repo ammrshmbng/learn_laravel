@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('title','Gallery')
+@section('menuGallery','active')
 
 @section('content')
 <div class="container text-center mt-3 p-4 bg-white">
@@ -22,7 +23,7 @@
       class="img-thumbnail img-fluid">
     </div>
     <div class="col-4 mt-4">
-      <img src="https://source.unsplash.com/T-tVt4xsCdE/350x250" 
+      <img src="https://source.unsplash.com/T-tVt4xsCdE/350x250"
       class="img-thumbnail img-fluid">
     </div>
     <div class="col-4 mt-4">
