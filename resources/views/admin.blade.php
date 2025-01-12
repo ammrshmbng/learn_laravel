@@ -13,15 +13,12 @@
   <div class="row">
     <div class="col-12">
 
-      <div class="alert alert-warning alert-dismissible fade show">
+        @component('layout.alert')
         100 data mahasiswa perlu di perbaiki
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
-
-      <div class="alert alert-danger alert-dismissible fade show">
+        @endcomponent
+        @component('layout.alert')
         Hari ini deadline laporan perjalanan dinas!
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
+        @endcomponent
 
     </div>
   </div>
