@@ -30,3 +30,8 @@ Route::get('mahasiswa', function () {
     Route::get('gallery', function () {
     return view('gallery');
     });
+
+
+    Route::get('admin', function () {
+        return view('admin');
+    });
