@@ -14,10 +14,24 @@
     <div class="col-12">
 
         @component('layout.alert')
-        100 data mahasiswa perlu di perbaiki
+          @slot('class')
+            warning
+          @endslot
+          100 data mahasiswa perlu di perbaiki
         @endcomponent
+
         @component('layout.alert')
-        Hari ini deadline laporan perjalanan dinas!
+          @slot('class')
+            danger
+          @endslot
+          Hari ini deadline laporan perjalanan dinas!
+        @endcomponent
+
+        @component('layout.alert')
+          @slot('class')
+            success
+          @endslot
+          Bulan depan cuti panjang...
         @endcomponent
 
     </div>
