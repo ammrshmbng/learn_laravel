@@ -7,13 +7,15 @@ use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
-    public function cekObject(){
+    public function cekObject()
+    {
         $mahasiswa = new Mahasiswa;
 
         dump($mahasiswa);
     }
 
-    public function insert(){
+    public function insert()
+    {
         $mahasiswa = new Mahasiswa;
         $mahasiswa->nim = '19003036';
         $mahasiswa->nama = 'Sari Citra Lestari';
@@ -24,14 +26,15 @@ class MahasiswaController extends Controller
         dump($mahasiswa);
     }
 
-    public function massAssignment(){
+    public function massAssignment()
+    {
         Mahasiswa::create(
-                [
-                    'nim' => '19021044',
-                    'nama' => 'Rudi Permana',
-                    'tanggal_lahir' => '2000-08-22',
-                    'ipk' => 2.5,
-                ]
+            [
+                'nim' => '19021044',
+                'nama' => 'Rudi Permana',
+                'tanggal_lahir' => '2000-08-22',
+                'ipk' => 2.5,
+            ]
         );
 
         // Jika property $fillable atau $guarded tidak di set, akan tampil
@@ -40,7 +43,8 @@ class MahasiswaController extends Controller
         return "Berhasil di proses";
     }
 
-    public function massAssignment2(){
+    public function massAssignment2()
+    {
         $mahasiswa1 = Mahasiswa::create(
             [
                 'nim' => '19002032',
@@ -58,10 +62,10 @@ class MahasiswaController extends Controller
                 'tanggal_lahir' => '1999-04-02',
                 'ipk' => 2.7,
             ]
-         );
-         dump($mahasiswa2);
+        );
+        dump($mahasiswa2);
 
-         $mahasiswa3 = Mahasiswa::create(
+        $mahasiswa3 = Mahasiswa::create(
             [
                 'nim' => '19005011',
                 'nama' => 'Riana Putria',
@@ -72,7 +76,8 @@ class MahasiswaController extends Controller
         dump($mahasiswa3);
     }
 
-    public function update(){
+    public function update()
+    {
         $mahasiswa = Mahasiswa::find(1);
         $mahasiswa->tanggal_lahir = '2001-01-01';
         $mahasiswa->ipk = 2.9;
@@ -81,8 +86,9 @@ class MahasiswaController extends Controller
         dump($mahasiswa);
     }
 
-    public function updateWhere(){
-        $mahasiswa = Mahasiswa::where('nim','19003036')->first();
+    public function updateWhere()
+    {
+        $mahasiswa = Mahasiswa::where('nim', '19003036')->first();
         $mahasiswa->tanggal_lahir = '2001-12-31';
         $mahasiswa->ipk = 4.0;
         $mahasiswa->save();
@@ -90,15 +96,17 @@ class MahasiswaController extends Controller
         dump($mahasiswa);
     }
 
-    public function massUpdate(){
-        Mahasiswa::where('nim','19003036')->first()->update([
-            'tanggal_lahir' =>'2000-04-20',
+    public function massUpdate()
+    {
+        Mahasiswa::where('nim', '19003036')->first()->update([
+            'tanggal_lahir' => '2000-04-20',
             'ipk' => 2.1
         ]);
         return "Berhasil di proses";
     }
 
-    public function delete(){
+    public function delete()
+    {
         $mahasiswa = Mahasiswa::find(1);
         $mahasiswa->delete();
 
@@ -106,19 +114,22 @@ class MahasiswaController extends Controller
         // error jika mahasiswa tidak ditemukan
     }
 
-    public function destroy(){
+    public function destroy()
+    {
         $mahasiswa = Mahasiswa::destroy(1);
         dump($mahasiswa);
         // tidak error jika mahasiswa tidak ditemukan
         // bisa juga seperti ini: Mahasiswa::destroy([3, 9, 10]);
     }
 
-    public function massDelete(){
-        $mahasiswa = Mahasiswa::where('ipk','>',2)->delete();
+    public function massDelete()
+    {
+        $mahasiswa = Mahasiswa::where('ipk', '>', 2)->delete();
         dump($mahasiswa);
     }
 
-    public function all(){
+    public function all()
+    {
         $result = Mahasiswa::all();
         // dump($result);
 
@@ -129,33 +140,37 @@ class MahasiswaController extends Controller
         // echo($result[0]->ipk);
 
         foreach ($result as $mahasiswa) {
-            echo($mahasiswa->id). '<br>';
-            echo($mahasiswa->nim). '<br>';
-            echo($mahasiswa->nama). '<br>';
-            echo($mahasiswa->tanggal_lahir). '<br>';
-            echo($mahasiswa->ipk). '<br>';
+            echo ($mahasiswa->id) . '<br>';
+            echo ($mahasiswa->nim) . '<br>';
+            echo ($mahasiswa->nama) . '<br>';
+            echo ($mahasiswa->tanggal_lahir) . '<br>';
+            echo ($mahasiswa->ipk) . '<br>';
             echo "<hr>";
         }
     }
 
-    public function allView(){
+    public function allView()
+    {
         $mahasiswas = Mahasiswa::all();
-        return view('tampil-mahasiswa',['mahasiswas' => $mahasiswas]);
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswas]);
     }
 
-    public function getWhere(){
-        $mahasiswas = Mahasiswa::where('ipk','<','3')
+    public function getWhere()
+    {
+        $mahasiswas = Mahasiswa::where('ipk', '<', '3')
             ->orderBy('nama', 'desc')
             ->get();
-        return view('tampil-mahasiswa',['mahasiswas' => $mahasiswas]);
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswas]);
     }
 
-    public function testWhere(){
-        $mahasiswa = Mahasiswa::where('nim','18012012')->get();
+    public function testWhere()
+    {
+        $mahasiswa = Mahasiswa::where('nim', '18012012')->get();
         dump($mahasiswa);
     }
 
-    public function first(){
+    public function first()
+    {
         // $mahasiswa = Mahasiswa::where('nim','18012012')->first();
         // dump($mahasiswa);
 
@@ -166,28 +181,44 @@ class MahasiswaController extends Controller
         //  $mahasiswa = Mahasiswa::where('nim','18012012')->first();
         //  echo $mahasiswa->nama;       // James Situmorang
 
-        $mahasiswa = Mahasiswa::where('ipk','<','3')->first();
-        return view('tampil-mahasiswa',['mahasiswas' => [$mahasiswa]]);
+        $mahasiswa = Mahasiswa::where('ipk', '<', '3')->first();
+        return view('tampil-mahasiswa', ['mahasiswas' => [$mahasiswa]]);
     }
 
-    public function find(){
+    public function find()
+    {
         $mahasiswa = Mahasiswa::find(8);
-        return view('tampil-mahasiswa',['mahasiswas' => [$mahasiswa]]);
+        return view('tampil-mahasiswa', ['mahasiswas' => [$mahasiswa]]);
     }
 
-    public function latest(){
+    public function latest()
+    {
         $mahasiswa = Mahasiswa::latest()->get();
-        return view('tampil-mahasiswa',['mahasiswas' => $mahasiswa]);
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswa]);
     }
 
-    public function limit(){
+    public function limit()
+    {
         $mahasiswa = Mahasiswa::latest()->limit(2)->get();
         // $mahasiswa = Mahasiswa::orderBy('created_at','desc')->limit(2)->get();
-        return view('tampil-mahasiswa',['mahasiswas' => $mahasiswa]);
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswa]);
     }
 
-    public function skipTake(){
+    public function skipTake()
+    {
         $mahasiswa = Mahasiswa::orderBy('ipk')->skip(1)->take(3)->get();
-        return view('tampil-mahasiswa',['mahasiswas' => $mahasiswa]);
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswa]);
+    }
+
+    public function softDelete()
+    {
+        Mahasiswa::where('nim', '18012012')->delete();
+        return "Berhasil di hapus";
+    }
+
+    public function withTrashed()
+    {
+        $mahasiswas = Mahasiswa::withTrashed()->get();
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswas]);
     }
 }
