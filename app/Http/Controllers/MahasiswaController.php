@@ -221,4 +221,16 @@ class MahasiswaController extends Controller
         $mahasiswas = Mahasiswa::withTrashed()->get();
         return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswas]);
     }
+
+    public function restore()
+    {
+        Mahasiswa::withTrashed()->where('nim', '18012012')->restore();
+        return "Berhasil di restore";
+    }
+
+    public function forceDelete()
+    {
+        Mahasiswa::where('nim', '19005011')->forceDelete();
+        return "Berhasil di hapus secara permanen";
+    }
 }
