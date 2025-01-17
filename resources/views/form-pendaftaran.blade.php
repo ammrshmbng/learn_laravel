@@ -1,3 +1,7 @@
+<?php
+  // tampilkan semua pesan error
+  // dump($errors);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +19,18 @@
       <h1>Pendaftaran Mahasiswa</h1>
       <hr>
 
-      <form action="{{url('/proses-form')}}" method="GET">
+      @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
+
+      <form action="{{url('/proses-form')}}" method="POST">
+        @csrf
         <div class="mb-3">
           <label class="form-label" for="nim">NIM</label>
           <input type="text" class="form-control" id="nim" name="nim">
@@ -33,7 +48,7 @@
 
         <div class="mb-3">
           <label class="form-label">Jenis Kelamin</label>
-          <div class="d-flex" >
+          <div class="d-flex">
             <div class="form-check me-3">
               <input class="form-check-input" type="radio" name="jenis_kelamin"
               id="laki_laki" value="L">
@@ -60,7 +75,7 @@
 
         <div class="mb-3">
           <label class="form-label" for="alamat">Alamat</label>
-          <textarea class="form-control" id="alamat" rows="3" 
+          <textarea class="form-control" id="alamat" rows="3"
           name="alamat"></textarea>
         </div>
 
