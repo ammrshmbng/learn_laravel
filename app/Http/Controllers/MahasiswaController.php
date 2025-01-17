@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class MahasiswaController extends Controller
 {
@@ -23,5 +24,17 @@ class MahasiswaController extends Controller
         ]);
 
         dump($validateData);
+    }
+
+    public function formPendaftaranId()
+    {
+        App::setLocale('id');
+        return view('form-pendaftaran');
+    }
+
+    public function formPendaftaranEn()
+    {
+        App::setLocale('en');
+        return view('form-pendaftaran');
     }
 }
