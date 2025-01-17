@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\App;
 
 class MahasiswaController extends Controller
 {
-    public function formPendaftaran()
+    public function formPendaftaran($locale = 'id')
     {
+        App::setLocale($locale);
         return view('form-pendaftaran');
     }
 
