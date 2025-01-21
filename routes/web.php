@@ -1,66 +1,50 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\NilaiController;
 
-// Praktek raw query
-
-Route::get('/mahasiswa/all',           [MahasiswaController::class,'all']);
-Route::get('/mahasiswa/gabung-1',      [MahasiswaController::class,'gabung1']);
-Route::get('/mahasiswa/gabung-2',      [MahasiswaController::class,'gabung2']);
-Route::get('/mahasiswa/gabung-join-1', [MahasiswaController::class,'gabungJoin1']);
-Route::get('/mahasiswa/gabung-join-2', [MahasiswaController::class,'gabungJoin2']);
-Route::get('/mahasiswa/gabung-join-3', [MahasiswaController::class,'gabungJoin3']);
+Route::get('/jurusan/all',          [JurusanController::class,'all']);
+Route::get('/jurusan/gabung',       [JurusanController::class,'gabung']);
+Route::get('/jurusan/gabung-join',  [JurusanController::class,'gabungJoin']);
 
 
-// Praktek Eloquent Relationship hasOne()
+Route::prefix('/jurusan')->group(function () {
+  Route::get('/find',               [JurusanController::class,'find']);
+  Route::get('/where',              [JurusanController::class,'where']);
+  Route::get('/all-join',           [JurusanController::class,'allJoin']);
 
-Route::prefix('/mahasiswa')->group(function () {
-  Route::get('/find',              [MahasiswaController::class,'find']);
-  Route::get('/where',             [MahasiswaController::class,'where']);
-  Route::get('/where-chaining',    [MahasiswaController::class,'whereChaining']);
-  Route::get('/all-join',          [MahasiswaController::class,'allJoin']);
-  Route::get('/has',               [MahasiswaController::class,'has']);
-  Route::get('/where-has',         [MahasiswaController::class,'whereHas']);
-  Route::get('/doesnt-have',       [MahasiswaController::class,'doesntHave']);
-  Route::get('/where-doesnt-have', [MahasiswaController::class,'whereDoesntHave']);
+  Route::get('/has',                [JurusanController::class,'has']);
+  Route::get('/where-has',          [JurusanController::class,'whereHas']);
+  Route::get('/doesnt-have',        [JurusanController::class,'doesntHave']);
 
-  Route::get('/insert-save',       [MahasiswaController::class,'insertSave']);
-  Route::get('/insert-create',     [MahasiswaController::class,'insertCreate']);
+  Route::get('/with-count',         [JurusanController::class,'withCount']);
+  Route::get('/load-count',         [JurusanController::class,'loadCount']);
 
-  Route::get('/update',            [MahasiswaController::class,'update']);
-  Route::get('/update-push',       [MahasiswaController::class,'updatePush']);
-  Route::get('/update-push-where', [MahasiswaController::class,'updatePushWhere']);
+  Route::get('/insert-save',        [JurusanController::class,'insertSave']);
+  Route::get('/insert-create',      [JurusanController::class,'insertCreate']);
+  Route::get('/insert-create-many', [JurusanController::class,'insertCreateMany']);
 
-  Route::get('/delete-find',       [MahasiswaController::class,'deleteFind']);
-  Route::get('/delete-where',      [MahasiswaController::class,'deleteWhere']);
-  Route::get('/delete-if',         [MahasiswaController::class,'deleteIf']);
-  Route::get('/delete-cascade',    [MahasiswaController::class,'deleteCascade']);
-  Route::get('/update-cascade',    [MahasiswaController::class,'updateCascade']);
+  Route::get('/update',             [JurusanController::class,'update']);
+  Route::get('/update-push',        [JurusanController::class,'updatePush']);
 
+  Route::get('/delete',             [JurusanController::class,'delete']);
 });
 
 
-// Praktek Eloquent Relationship belongsTo()
 
-Route::prefix('/nilai')->group(function () {
-  Route::get('/find',              [NilaiController::class,'find']);
-  Route::get('/where',             [NilaiController::class,'where']);
-  Route::get('/where-chaining',    [NilaiController::class,'whereChaining']);
-  Route::get('/has',               [NilaiController::class,'has']);
-  Route::get('/has-eager',         [NilaiController::class,'hasEager']);
+Route::prefix('/mahasiswa')->group(function () {
+  Route::get('/find',             [MahasiswaController::class,'find']);
+  Route::get('/where',            [MahasiswaController::class,'where']);
+  Route::get('/where-chaining',   [MahasiswaController::class,'whereChaining']);
+  Route::get('/has',              [MahasiswaController::class,'has']);
+  Route::get('/where-has',        [MahasiswaController::class,'whereHas']);
+  Route::get('/doesnt-have',      [MahasiswaController::class,'doesntHave']);
 
-  Route::get('/test-input-1',      [NilaiController::class,'testInput1']);
-  Route::get('/test-input-2',      [NilaiController::class,'testInput2']);
-  Route::get('/test-input-3',      [NilaiController::class,'testInput3']);
-  Route::get('/test-input-4',      [NilaiController::class,'testInput4']);
+  Route::get('/associate',        [MahasiswaController::class,'associate']);
 
-  Route::get('/associate-new',     [NilaiController::class,'associateNew']);
-  Route::get('/associate-find',    [NilaiController::class,'associateFind']);
+  Route::get('/associate-update', [MahasiswaController::class,'associateUpdate']);
 
-  Route::get('/delete',            [NilaiController::class,'delete']);
-  Route::get('/delete-mahasiswa',  [NilaiController::class,'deleteMahasiswa']);
-  Route::get('/delete-mahasiswa',  [NilaiController::class,'deleteMahasiswa']);
-
+  Route::get('/delete',           [MahasiswaController::class,'delete']);
+  Route::get('/dissociate',       [MahasiswaController::class,'dissociate']);
 });
