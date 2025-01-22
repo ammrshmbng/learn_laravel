@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Mahasiswa extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
-    public function jurusan(): BelongsTo
+    public function matakuliahs(): BelongsToMany
     {
-        return $this->belongsTo('App\Models\Jurusan');
+        // return $this->belongsToMany('App\Models\Matakuliah');
+        return $this->belongsToMany('App\Models\Matakuliah')->withTimestamps();
     }
 }

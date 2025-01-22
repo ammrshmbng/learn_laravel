@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->char('nim',8)->unique();
             $table->string('nama');
-            $table->foreignId('jurusan_id')->constrained()->onDelete('cascade');
-            // $table->foreignId('jurusan_id')->nullable()->constrained()
-            //       ->onDelete('cascade');
+            $table->string('jurusan');
             $table->timestamps();
         });
     }
